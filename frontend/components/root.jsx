@@ -9,7 +9,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 // containers
 import App from './app';
-import MainContainer from './auth/auth_container';
+import PostsIndexContainer from './index/posts_index_container';
 
 // actions
 
@@ -40,7 +40,7 @@ import MainContainer from './auth/auth_container';
     <Provider store={store}>
       <Router history={hashHistory}>
         <Route path ="/" component={App}>
-          <IndexRoute component={MainContainer}/>
+          <IndexRoute component={PostsIndexContainer}/>
 
         </Route>
       </Router>
