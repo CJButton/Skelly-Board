@@ -10,9 +10,9 @@ class PostsIndex extends React.Component{
     this.state = {
       username: "",
       password1: "",
-      name: "",
+      password2: "",
       email: "",
-      password2: ""
+      createUser: false
     };
 
     this.handleLogin = this.handleLogin.bind(this);
@@ -41,18 +41,20 @@ class PostsIndex extends React.Component{
     this.props.router.push("/");
   }
 
-  handleSignup(e) {
-    e.preventDefault();
-    const username = this.state.name;
-    const email = this.state.email;
-    const password = this.state.password2;
-    const newUser = {user: {username, password, email}};
-    this.props.signup(newUser);
-  }
+  // handleSignup(e) {
+  //   console.log(this.state);
+  //   e.preventDefault();
+  //   const username = this.state.name;
+  //   const email = this.state.email;
+  //   const password = this.state.password2;
+  //   const newUser = {user: {username, password, email}};
+  //   console.log(newUser);
+  //   this.props.signup(newUser);
+  // }
 
-  componentDidUpdate() {
-		this.redirectIfLoggedIn();
-	}
+  // componentDidUpdate() {
+	// 	this.redirectIfLoggedIn();
+	// }
 
 	redirectIfLoggedIn() {
 		if (this.props.loggedIn) {
@@ -76,12 +78,91 @@ class PostsIndex extends React.Component{
    }
   }
 
+  createUserModal() {
+    this.setState({
+      createUser: true
+    });
+  }
+
+  closeModal() {
+    this.setState({
+      createUser: false
+    });
+  }
+
+  handleSignup(e) {
+    e.preventDefault();
+    const username = this.state.username;
+    const email = this.state.email;
+    const password = this.state.password1;
+    const newUser = {user: {username, password, email}};
+    console.log(newUser);
+    // this.state.password1 === this.state.password2 ?
+    // this.passwordMismatch() : this.props.signup(newUser);
+  }
+
+  passwordMismatch() {
+    return (
+      <p>Passwords must match!</p>
+    );
+  }
+
+  componentWillMount() {
+  Modal.setAppElement('body');
+  }
 
   render() {
+    console.log(this.props);
     return (
-    <nav className="postsIndexWrapper">
+    <div className="postsIndexWrapper">
+      <p>Welcome to the barebones Skelly Board!</p>
+      <button className="createUserButton"
+            onClick={this.createUserModal.bind(this)}>Create User</button>
 
-    </nav>
+
+        <Modal className="createUser"
+            isOpen={this.state.createUser}
+            contentLabel="Modal2">
+            <h1 className="editFormTitle">Sign Up!</h1>
+
+            <button className="closeEditButton"
+              onClick={this.closeModal.bind(this)}>X</button>
+
+          <form className="createUserForm"
+            onSubmit={this.handleSignup.bind(this)}>
+            <p>Username</p>
+            <input className="createUserName"
+                type="text"
+                placeholder="Username"
+                onChange={this.update("username")}
+                value={this.state.username}></input>
+
+            <p>Password</p>
+            <input className="editReview-input"
+              type="password"
+              placeholder="Password"
+              onChange={this.update("password1")}
+              value={this.state.password1}></input>
+
+            <p>Please re-enter your password.</p>
+            <input className="editReview-input"
+              type="password"
+              placeholder="Re-enter your password"
+              onChange={this.update("password2")}
+              value={this.state.password2}></input>
+
+            <p>Email</p>
+            <input  className="createUserEmail"
+              placeholder="Email"
+              onChange={this.update("email")}
+              value={this.state.email}></input>
+
+            <button className="review-submit button"
+              type="submit">Submit!</button>
+          </form>
+
+          </Modal>
+    </div>
     );
   }
 }
