@@ -12,9 +12,7 @@ class AuthForm extends React.Component{
       password1: "",
       name: "",
       email: "",
-      password2: "",
-      background: "http://res.cloudinary.com/ddbfkqb9m/image/upload/v1483312524/splash3_nafstw.png",
-      bgidx: 0
+      password2: ""
     };
 
     this.handleLogin = this.handleLogin.bind(this);
