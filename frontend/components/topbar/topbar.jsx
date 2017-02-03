@@ -82,13 +82,31 @@ class TopBar extends React.Component{
 
   handleSignup(e) {
     e.preventDefault();
+
+    if (this.state.password1 !== this.state.password2) {
+      this.passwordMismatch();
+    }
+
+    this.signupAndCloseModal();
+
+    if (this.props.currentUser !== null) {
+      this.closeModal();
+    }
+
+    // (this.state.password1 !== this.state.password2) ||
+    // (this.props.currentUser !== null) ?
+    // this.passwordMismatch() : this.signupAndCloseModal();
+    // this.passwordMismatch() : this.props.signup(newUser);
+    // this.closeModal();
+  }
+
+  signupAndCloseModal() {
     const username = this.state.username;
     const email = this.state.email;
     const password = this.state.password1;
     const newUser = {user: {username, password, email}};
-    this.state.password1 !== this.state.password2 ?
-    this.passwordMismatch() : this.props.signup(newUser);
-    this.closeModal();
+    this.props.signup(newUser);
+    // this.closeModal();
   }
 
   passwordMismatch() {
@@ -218,14 +236,3 @@ class TopBar extends React.Component{
 }
 
 export default TopBar;
-
-// <nav className="topbar-nav">
-//
-//   <div className="topbar-left">
-//   </div>
-//
-//   <div className="topbar-right">
-//     <input className="topbar-logout-button button" type="submit"
-//       onClick={this.handleLogout} value="Logout"/>
-//   </div>
-// </nav>
