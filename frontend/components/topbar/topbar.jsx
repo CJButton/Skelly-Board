@@ -13,7 +13,8 @@ class TopBar extends React.Component{
     super(props);
 
     this.state = {
-      username: "",
+      fname: "",
+      lname: "",
       password1: "",
       password2: "",
       email: "",

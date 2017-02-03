@@ -5,17 +5,28 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-50.times do
-    User.create(
+100.times do
+    user = User.create(
         username: Faker::GameOfThrones.character,
         password_digest: Faker::Internet.password,
         email: Faker::Internet.email)
+
+    if user.id != nil && (user.id % 3 ==  0)
+      Post.create(
+        title: Faker::Lorem.sentence(3, true),
+        body: Faker::Lorem.paragraph(2),
+        user_id: user.id)
+    end
+
 end
 
 # Faker::Lorem.sentence(3, true)
 # Faker::Lorem.paragraph(2)
 
-# username: string, email: string, password_digest: string
 
-# fname: Faker::Name.first_name,
-# lname: Faker::Name.last_name
+
+
+# Posts
+# t.string   "title",      null: false
+# t.text     "body",       null: false
+# t.integer  "user_id",    null: false
