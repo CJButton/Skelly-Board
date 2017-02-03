@@ -32,6 +32,9 @@ class TopBar extends React.Component{
     this.setState({
       errors: nextState.errors
     });
+    if (nextState.currentUser !== null) {
+      this.closeModal();
+    }
   }
 
   update(property) {
@@ -85,19 +88,13 @@ class TopBar extends React.Component{
 
     if (this.state.password1 !== this.state.password2) {
       this.passwordMismatch();
+    } else {
+      this.signupAndCloseModal();
     }
-
-    this.signupAndCloseModal();
 
     if (this.props.currentUser !== null) {
       this.closeModal();
     }
-
-    // (this.state.password1 !== this.state.password2) ||
-    // (this.props.currentUser !== null) ?
-    // this.passwordMismatch() : this.signupAndCloseModal();
-    // this.passwordMismatch() : this.props.signup(newUser);
-    // this.closeModal();
   }
 
   signupAndCloseModal() {
@@ -106,7 +103,6 @@ class TopBar extends React.Component{
     const password = this.state.password1;
     const newUser = {user: {username, password, email}};
     this.props.signup(newUser);
-    // this.closeModal();
   }
 
   passwordMismatch() {
