@@ -5,3 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+50.times do
+    User.create(
+        username: Faker::GameOfThrones.character,
+        password_digest: Faker::Internet.password,
+        email: Faker::Internet.email)
+end
+
+# Faker::Lorem.sentence(3, true)
+# Faker::Lorem.paragraph(2)
+
+# username: string, email: string, password_digest: string
+
+# fname: Faker::Name.first_name,
+# lname: Faker::Name.last_name

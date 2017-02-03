@@ -134,8 +134,6 @@ class TopBar extends React.Component{
   }
 
   render() {
-    console.log(this.props);
-    console.log(this.state);
     return (
       <header className="topbar-header">
           <p>Welcome to the barebones Skelly Board!</p>
