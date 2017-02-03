@@ -7,15 +7,12 @@ import Modal from 'react-modal';
 class PostsIndex extends React.Component{
   constructor(props) {
     super(props);
-
     this.state = {
       username: "",
       password1: "",
-      password2: "",
+      name: "",
       email: "",
-      createUser: false,
-      warning: "warningHide",
-      newUser: "newUserHide"
+      password2: ""
     };
 
     this.handleLogin = this.handleLogin.bind(this);
@@ -44,6 +41,19 @@ class PostsIndex extends React.Component{
     this.props.router.push("/");
   }
 
+  handleSignup(e) {
+    e.preventDefault();
+    const username = this.state.name;
+    const email = this.state.email;
+    const password = this.state.password2;
+    const newUser = {user: {username, password, email}};
+    this.props.signup(newUser);
+  }
+
+  componentDidUpdate() {
+		this.redirectIfLoggedIn();
+	}
+
 	redirectIfLoggedIn() {
 		if (this.props.loggedIn) {
 			this.props.router.push("/");
@@ -66,98 +76,12 @@ class PostsIndex extends React.Component{
    }
   }
 
-  createUserModal() {
-    this.setState({
-      createUser: true
-    });
-  }
-
-  closeModal() {
-    this.setState({
-      createUser: false
-    });
-  }
-
-  handleSignup(e) {
-    e.preventDefault();
-    const username = this.state.username;
-    const email = this.state.email;
-    const password = this.state.password1;
-    const newUser = {user: {username, password, email}};
-    this.state.password1 !== this.state.password2 ?
-    this.passwordMismatch() : this.props.signup(newUser);
-    this.closeModal();
-  }
-
-  passwordMismatch() {
-    return (
-      this.setState({
-        warning: "warningShow"
-      })
-    );
-  }
-
-  componentWillMount() {
-  Modal.setAppElement('body');
-  }
 
   render() {
-    console.log(this.props);
-    console.log(this.state);
     return (
     <div className="postsIndexWrapper">
-      <p>Welcome to the barebones Skelly Board!</p>
-      {this.props.currentUser === null ? <button className="createUserButton"
-              onClick={this.createUserModal.bind(this)}>Create User</button> :
-              null
-      }
-      {this.props.currentUser !== null ? <button className="logoutUserButton"
-        onClick={this.props.logout}>Logout!</button>}
 
-        <Modal className="createUser"
-            isOpen={this.state.createUser}
-            contentLabel="Modal2">
-            <h1 className="editFormTitle">Sign Up!</h1>
-
-            <button className="closeEditButton"
-              onClick={this.closeModal.bind(this)}>X</button>
-
-          <form className="createUserForm"
-            onSubmit={this.handleSignup.bind(this)}>
-            <p>Username</p>
-            <input className="createUserName"
-                type="text"
-                placeholder="Username"
-                onChange={this.update("username")}
-                value={this.state.username}></input>
-
-            <p>Password</p>
-            <div className={this.state.warning}>Oh no! The passwords don't match!</div>
-            <input className="editReview-input"
-              type="password"
-              placeholder="Password"
-              onChange={this.update("password1")}
-              value={this.state.password1}></input>
-
-            <p>Please re-enter your password.</p>
-            <div className={this.state.warning}>Oh no! the passwords don't match!</div>
-            <input className="editReview-input"
-              type="password"
-              placeholder="Re-enter your password"
-              onChange={this.update("password2")}
-              value={this.state.password2}></input>
-
-            <p>Your email</p>
-            <input  className="createUserEmail"
-              placeholder="Email"
-              onChange={this.update("email")}
-              value={this.state.email}></input>
-
-            <button className="review-submit button"
-              type="submit">Submit!</button>
-          </form>
-
-          </Modal>
+      <div><p>Nothing is showing up?</p></div>
     </div>
     );
   }
