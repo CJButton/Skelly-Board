@@ -14,7 +14,7 @@ import { login, signup, logout } from '../util/session_api_util';
 export default ({ getState, dispatch }) => next => action => {
   const successCallback = user => dispatch(receiveCurrentUser(user));
   const errorCallback = xhr => dispatch(receiveErrors(xhr.responseJSON));
-  const logoutSuccess = () => hashHistory.replace("/login");
+  const logoutSuccess = () => hashHistory.replace("/");
 
   switch(action.type) {
     case LOGIN:
