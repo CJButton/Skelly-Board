@@ -21,11 +21,17 @@ class TopBar extends React.Component{
       newUser: false,
       loginUser: false,
       warning: "warningHide",
-      errors: this.props.errors
+      errors: []
     };
 
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
+  }
+
+  componentWillReceiveProps(nextState) {
+    this.setState({
+      errors: nextState.errors
+    });
   }
 
   update(property) {
@@ -46,9 +52,6 @@ class TopBar extends React.Component{
     if (this.props.currentUser !== null) {
       this.closeModal();
     }
-    // this.state.errors.length === 0 ? this.closeModal(); :
-
-    // this.props.router.push("/");
   }
 
   createUserModal() {
@@ -65,9 +68,15 @@ class TopBar extends React.Component{
 
   closeModal() {
     this.setState({
+      username: "",
+      password1: "",
+      password2: "",
+      email: "",
       createUser: false,
+      newUser: false,
       loginUser: false,
-      newUser: false
+      warning: "warningHide",
+      errors: []
     });
   }
 
@@ -95,11 +104,11 @@ class TopBar extends React.Component{
   }
 
   renderErrors() {
-    if (this.props.errors !== []){
+    if (this.state.errors !== []){
       return(
         <div className="errorsContainer">
           <ul>
-            {this.props.errors.map((error, idx) => (
+            {this.state.errors.map((error, idx) => (
               <li key={idx} className="errorMessage">
                 {error}
               </li>
@@ -112,6 +121,7 @@ class TopBar extends React.Component{
 
   render() {
     console.log(this.props);
+    console.log(this.state);
     return (
       <header className="topbar-header">
           <p>Welcome to the barebones Skelly Board!</p>
