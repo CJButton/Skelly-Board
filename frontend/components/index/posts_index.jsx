@@ -9,7 +9,6 @@ class PostsIndex extends React.Component{
     super(props);
 
     this.state = {
-
     };
 
 
@@ -21,7 +20,11 @@ class PostsIndex extends React.Component{
     console.log(this.state);
     return (
     <div className="postsIndexWrapper">
-      
+      {this.props.posts.map((post, i) => {
+        return(
+          <div key={i}>{post.title}</div>
+        );
+      })}
     </div>
 
     );
