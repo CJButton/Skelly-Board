@@ -6,7 +6,8 @@ import PostIndex from './posts_index';
 import values from 'lodash/values';
 
 // if user is logged in, then redirect them elsewhere
-const mapStateToProps = ({posts}) => ({
+const mapStateToProps = ({posts, session}) => ({
+  user: session.currentUser,
   posts: values(posts)
 });
 

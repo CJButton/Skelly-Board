@@ -18,3 +18,14 @@ export const getAllPosts = (success, error) => {
     error
   });
 };
+
+export const sendPost =
+      (userId, title, text, username, success, error) => {
+  $.ajax({
+    type: 'POST',
+    url: `api/posts`,
+    data: {userId, title, text, username},
+    success,
+    error
+  });
+};

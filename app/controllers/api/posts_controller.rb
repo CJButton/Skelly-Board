@@ -12,11 +12,15 @@ class Api::PostsController < ApplicationController
   end
 
   def create
-  name = User.find(posts_params.user_id).username
   @post = Post.new(posts_params)
 
   if @post.save
-    @post
+    render "api/posts/show"
+  else
+    render(
+      json: ["Title/Text cannot be blank"],
+      status: 401
+    )
   end
 
 end
@@ -35,7 +39,7 @@ end
   private
 
   def posts_params
-    params.require(:post).permit(:id, :title, :body, :user_id)
+    params.require(:post).permit(:userId, :title, :body, :username)
   end
 
 end
