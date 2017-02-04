@@ -9,9 +9,8 @@ class PostsIndex extends React.Component{
     super(props);
 
     this.state = {
+
     };
-
-
   }
 
 
@@ -22,7 +21,13 @@ class PostsIndex extends React.Component{
     <div className="postsIndexWrapper">
       {this.props.posts.map((post, i) => {
         return(
-          <div key={i}>{post.title}</div>
+          <div key={i} className="indexPost">
+            <a href={`#/posts/${post.id}`}>
+              <div>{post.username}</div>
+              <div>{post.created_at}</div>
+              <div>{post.title}</div>
+            </a>
+          </div>
         );
       })}
     </div>
