@@ -49,7 +49,8 @@ import { requestAllPosts, requestPost } from '../actions/posts_actions';
           <IndexRoute component={PostsIndexContainer} onEnter={loadAllPosts}/>
 
           <Route path="/posts/:id"
-             component={PostContainer} onEnter={loadPost}/>
+             component={PostContainer}
+             onEnter={loadPost}/>
 
         </Route>
       </Router>

@@ -1,4 +1,5 @@
 
+import { hashHistory } from 'react-router';
 
 import {receivePost,
         REQUEST_POST,
@@ -26,7 +27,7 @@ const PostsMiddleware = ({ getState, dispatch }) => next => action => {
       return next(action);
 
     case SUBMIT_POST:
-      success = (post) => dispatch(receivePost(post));
+      success = (post) => hashHistory.replace(`posts/${post.id}`);
       sendPost(action.userId, action.title, action.text,
                 action.username, success, errorCallBack);
       return next(action);
@@ -35,5 +36,6 @@ const PostsMiddleware = ({ getState, dispatch }) => next => action => {
       next(action);
   }
 };
+// success = (post) => dispatch(receivePost(post));
 
 export default PostsMiddleware;

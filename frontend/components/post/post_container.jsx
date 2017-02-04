@@ -2,13 +2,14 @@
 
 
 import {connect} from 'react-redux';
+
 import PostComponent from './post';
 
 import values from 'lodash/values';
 
-const mapStateToProps = ({post, session}) => ({
+const mapStateToProps = ({posts, session}) => ({
   user: session.currentUser,
-  post: post
+  post: posts
 });
 
 const mapDispatchToProps = dispatch => ({
