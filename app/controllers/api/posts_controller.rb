@@ -8,7 +8,7 @@ class Api::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id].to_i)
   end
 
   def create
@@ -36,10 +36,10 @@ end
   render json: @post
 end
 
-  # private
-  #
-  # def posts_params
-  #   params.require(:post).permit(:userId, :title, :body, :username, :id)
-  # end
+  private
+
+  def posts_params
+    params.require(:post).permit(:user_id, :title, :body, :username)
+  end
 
 end

@@ -37,8 +37,12 @@ class PostsIndex extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.submitPost(this.props.user.id, this.state.title,
-                  this.state.text, this.props.user.username);
+    let user_id = this.props.user.id;
+    let title = this.state.title;
+    let body = this.state.text;
+    let username = this.props.user.username;
+    const newPost = {post: {user_id, title, body, username}};
+    this.props.submitPost(newPost);
     this.setState({
       title: "",
       text: "",

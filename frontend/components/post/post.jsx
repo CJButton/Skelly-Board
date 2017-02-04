@@ -20,11 +20,18 @@ constructor(props) {
     return (
       <div>
         <p>"Testing Post Component"</p>
+        <div>
+          {this.props.post.username}
+          <br></br>
+          {this.props.post.title}
+          <br></br>
+          <br></br>
+          {this.props.post.body}
+        </div>
+        
       </div>
     );
   }
-
-
 
 }
 

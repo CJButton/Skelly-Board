@@ -19,12 +19,9 @@ export const receivePost = (post) => ({
   post
 });
 
-export const submitPost = (userId, title, text, username) => ({
+export const submitPost = (postInfo) => ({
   type: SUBMIT_POST,
-  userId,
-  title,
-  text,
-  username
+  postInfo
 });
 
 export const requestAllPosts = (posts) => ({

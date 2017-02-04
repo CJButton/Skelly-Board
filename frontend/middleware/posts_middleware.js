@@ -22,20 +22,23 @@ const PostsMiddleware = ({ getState, dispatch }) => next => action => {
       return next(action);
 
     case REQUEST_POST:
+    // getting an unusual error where the db was getting hit twice
+    // so created an if statement to prevent an error
       success = post => dispatch(receivePost(post));
-      getPost(action.id, success);
+      if (action.type === "RECEIVE_POST" && action.id === undefined) {
+        return next(action);
+      }
+      getPost(action.id, success, errorCallBack);
       return next(action);
 
     case SUBMIT_POST:
       success = (post) => hashHistory.replace(`posts/${post.id}`);
-      sendPost(action.userId, action.title, action.text,
-                action.username, success, errorCallBack);
+      sendPost(action.postInfo, success, errorCallBack);
       return next(action);
 
     default:
       next(action);
   }
 };
-// success = (post) => dispatch(receivePost(post));
 
 export default PostsMiddleware;

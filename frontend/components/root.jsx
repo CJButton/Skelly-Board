@@ -26,12 +26,12 @@ import { requestAllPosts, requestPost } from '../actions/posts_actions';
     }
 
   };
-  const _redirectIfLoggedIn = (nextState, replace) => {
-    const currentUser = store.getState().session.currentUser;
-    if (currentUser) {
-      replace('/');
-    }
-  };
+  // const _redirectIfLoggedIn = (nextState, replace) => {
+  //   const currentUser = store.getState().session.currentUser;
+  //   if (currentUser) {
+  //     replace('/');
+  //   }
+  // };
 
   const loadAllPosts = () => {
     store.dispatch(requestAllPosts());
@@ -40,7 +40,6 @@ import { requestAllPosts, requestPost } from '../actions/posts_actions';
   const loadPost = (nextState) => {
     store.dispatch(requestPost(nextState.params.id));
   };
-
 
   return (
     <Provider store={store}>
