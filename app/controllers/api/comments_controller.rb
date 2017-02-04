@@ -3,6 +3,7 @@
 
 class Api::CommentsController < ApplicationController
   def index
+    @comments = Comment.
     @reviews = Review.filter(params[:manga])
   end
 
@@ -39,5 +40,14 @@ class Api::CommentsController < ApplicationController
     :title => params[:title], :description => params[:text])
 
     render json: @review
+  end
+
+  private
+  def comments_params
+    params.require(:comment).permit(:user_id, :title, :body, :username)
+  end
+
+  def posts_params
+    params.require(:post).permit(:user_id, :title, :body, :username)
   end
 end
