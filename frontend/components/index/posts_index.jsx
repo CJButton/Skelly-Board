@@ -21,6 +21,7 @@ class PostsIndex extends React.Component{
     console.log(this.state);
     return (
     <div className="postsIndexWrapper">
+      
     </div>
 
     );

@@ -1,9 +1,11 @@
 
 
+
 class Api::PostsController < ApplicationController
 
   def index
-    @posts = Posts.all
+    @posts = Post.all
+    
   end
 
   def show

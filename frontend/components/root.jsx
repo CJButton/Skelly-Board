@@ -11,6 +11,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
 import PostsIndexContainer from './index/posts_index_container';
 
+
 // actions
 import { requestAllPosts } from '../actions/posts_actions';
 
