@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-// import Modal from 'react-modal';
+import Modal from 'react-modal';
 
 class PostsIndex extends React.Component{
   constructor(props) {
@@ -10,7 +10,13 @@ class PostsIndex extends React.Component{
 
     this.state = {
       addModal: false,
+      title: "",
+      text: ""
     };
+  }
+
+  update(property) {
+    return e => this.setState({[property]: e.target.value});
   }
 
   closeModal() {
@@ -25,6 +31,19 @@ class PostsIndex extends React.Component{
     });
   }
 
+  componentWillMount() {
+    Modal.setAppElement('body');
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    // this.props.submitReview();
+    this.setState({
+      title: "",
+      text: "",
+      addModal: false
+    });
+  }
 
   render() {
     console.log(this.props);
@@ -32,7 +51,8 @@ class PostsIndex extends React.Component{
     return (
     <div className="postsIndexWrapper">
       <div className="postsIndexInnerWrapper">
-        <button className="createPost button">Make a Post</button>
+        <button className="createPost button"
+          onClick={this.openAddModal.bind(this)}>Make a Post</button>
       {this.props.posts.reverse().map((post, i) => {
         return(
           <div key={i} className="indexPost">
@@ -54,39 +74,24 @@ class PostsIndex extends React.Component{
           <button className="closePostButton"
             onClick={this.closeModal.bind(this)}>X</button>
           </div>
-          <div className="formTop">
-            <div className="formTopLeft">
-              {this.state.userReview === undefined ? null :
-                <p className="addUsername">
-                  {this.state.userReview.username}</p>}
-              <div className="addFormTop">
-                <StarRatingComponent
-                  className="starRating"
-                  name="rater"
-                  starCount={5}
-                  value={this.state.rating}
-                  onStarClick={this.onStarClick.bind(this)}/>
-              </div>
-              <p className="addComicTitle">
-                {this.props.manga === undefined ? null : this.props.manga.title}</p>
-            </div>
-          </div>
 
-        <form className="editFormModal"
+        <form className="addFormModal"
           onSubmit={this.handleSubmit.bind(this)}>
-          <p className="editTitle">Title</p>
-          <input className="editReview-text"
+          <p className="addTitle">Title</p>
+          <input className="addReview-text"
             type="text"
-            onChange={this.handleTitle}
+            placeholder="title"
+            onChange={this.update("title")}
             value={this.state.title}></input>
 
-          <p className="editDescription">Description</p>
-          <textarea className="editReview-textarea"
-            onChange={this.handleText}
+          <p className="addDescription">Body</p>
+          <textarea className="add-textarea"
+            placeholder="What would you like to say?"
+            onChange={this.update("text")}
             value={this.state.text}></textarea>
 
           <button className="review-submit button"
-            type="submit">Submit!</button>
+            type="submit">Add Post!</button>
         </form>
 
         </Modal>
