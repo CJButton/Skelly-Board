@@ -15,7 +15,7 @@ const mapStateToProps = ({posts, session}) => ({
 
 const mapDispatchToProps = dispatch => ({
   submitPost: (userId, title, text, username) =>
-        dispatch(submitPost(userId, title, text, username)),
+        dispatch(submitPost(userId, title, text, username))
 });
 
 export default connect(
