@@ -12,6 +12,8 @@ import App from './app';
 import PostsIndexContainer from './index/posts_index_container';
 
 // actions
+import { requestAllPosts } from '../actions/posts_actions';
+
 
   const Root = ({store}) => {
 
@@ -32,7 +34,7 @@ import PostsIndexContainer from './index/posts_index_container';
   // this will load all posts for the index page
   // will fill out after we have written the loop for it
   const loadAllPosts = () => {
-
+    store.dispatch(requestAllPosts());
   };
 
 
@@ -40,7 +42,7 @@ import PostsIndexContainer from './index/posts_index_container';
     <Provider store={store}>
       <Router history={hashHistory}>
         <Route path ="/" component={App}>
-          <IndexRoute component={PostsIndexContainer}/>
+          <IndexRoute component={PostsIndexContainer} onEnter={loadAllPosts}/>
 
         </Route>
       </Router>
