@@ -24,7 +24,7 @@ class PostsIndex extends React.Component{
           <div key={i} className="indexPost">
             <a href={`#/posts/${post.id}`}>
               <div>{post.username}</div>
-              <div>{post.created_at}</div>
+              <div>{Date(post.created_at)}</div>
               <div>{post.title}</div>
             </a>
           </div>
