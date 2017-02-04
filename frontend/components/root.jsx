@@ -10,10 +10,11 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 // containers
 import App from './app';
 import PostsIndexContainer from './index/posts_index_container';
+import PostContainer from './post/post_container';
 
 
 // actions
-import { requestAllPosts } from '../actions/posts_actions';
+import { requestAllPosts, requestPost } from '../actions/posts_actions';
 
 
   const Root = ({store}) => {
@@ -32,10 +33,12 @@ import { requestAllPosts } from '../actions/posts_actions';
     }
   };
 
-  // this will load all posts for the index page
-  // will fill out after we have written the loop for it
   const loadAllPosts = () => {
     store.dispatch(requestAllPosts());
+  };
+
+  const loadPost = (nextState) => {
+    store.dispatch(requestPost(nextState.params.id));
   };
 
 
@@ -45,28 +48,14 @@ import { requestAllPosts } from '../actions/posts_actions';
         <Route path ="/" component={App}>
           <IndexRoute component={PostsIndexContainer} onEnter={loadAllPosts}/>
 
+          <Route path="/posts/:id"
+             component={PostContainer} onEnter={loadPost}/>
+
         </Route>
       </Router>
     </Provider>
   );
 
 };
-// <IndexRoute component={MainContainer} onEnter={loadAllPosts}/>
-//
 
-// <Route path ="/" component={App} onEnter={_ensureLoggedIn}>
-//
-
-
-// <Route path="/login" component={MainContainer}
-  // onEnter={_redirectIfLoggedIn}/>
-
-
-// <Route path="/my-Manga"
-//        component={BookshelfContainer}
-//        onEnter={loadAllShelves}/>
-//
-// <Route path="/manga/:id"
-//        component={MangaContainer}
-//        onEnter={loadSingleManga}/>
 export default Root;

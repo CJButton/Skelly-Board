@@ -1,5 +1,4 @@
 
-import { browserHistory } from 'react-router';
 
 import {receivePost,
         REQUEST_POST,
@@ -27,7 +26,7 @@ const PostsMiddleware = ({ getState, dispatch }) => next => action => {
       return next(action);
 
     case SUBMIT_POST:
-      success = (post) => browserHistory.push(`api/posts/${post.id}`);
+      success = (post) => dispatch(receivePost(post));
       sendPost(action.userId, action.title, action.text,
                 action.username, success, errorCallBack);
       return next(action);
