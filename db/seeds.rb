@@ -15,18 +15,11 @@
       Post.create(
         title: Faker::Lorem.sentence(3, true),
         body: Faker::Lorem.paragraph(2),
-        user_id: user.id)
+        user_id: user.id,
+        username: user.username)
     end
 
 end
 
 # Faker::Lorem.sentence(3, true)
 # Faker::Lorem.paragraph(2)
-
-
-
-
-# Posts
-# t.string   "title",      null: false
-# t.text     "body",       null: false
-# t.integer  "user_id",    null: false
