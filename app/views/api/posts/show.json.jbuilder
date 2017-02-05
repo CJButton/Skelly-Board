@@ -4,4 +4,4 @@
 
 
 
-json.extract! @post, :id, :title, :body, :username
+json.extract! @post, :id, :user_id, :title, :body, :username

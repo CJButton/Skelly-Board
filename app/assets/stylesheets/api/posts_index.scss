@@ -17,3 +17,72 @@
   background-color: blue;
   color: white;
 }
+
+.addModal {
+  position: fixed;
+  top: 10%;
+  left: 24.5%;
+  background-color: white;
+  padding: 15px;
+  height: 55%;
+  width: 50%;
+  color: black;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: black;
+}
+
+.addFormTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addFormModal p {
+  font-size: 20px;
+}
+
+.addPost-text {
+  width: 98%;
+  height: 20px;
+}
+
+.add-textarea {
+  width: 98%;
+  height: 100px;
+}
+
+.post-submit {
+  background-color: white;
+  border-radius: 3px;
+  border-width: 1px;
+  border-color: black;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.addFormTitle {
+  margin: 0px;
+}
+
+.post-submit:hover {
+  background-color: blue;
+  color: white;
+}
+
+.closePostButton {
+  height: 35px;
+  font-size: 25px;
+  background-color: white;
+  border-radius: 3px;
+  border-width: 1px;
+  border-color: black;
+  margin-top: 8px;
+}
+
+.closePostButton:hover {
+  background-color: red;
+  color: white;
+}

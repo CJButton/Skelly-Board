@@ -27,7 +27,11 @@ end
 
   # need to delete all comments associated with this post later
   def destroy
-    @post = Post.delete(posts_params.id)
+    # p params
+    # @post = Post.delete(id: params[:id])
+    # render json: @
+    @post = Post.find(params[:id].to_i)
+    @post.destroy
     render json: @post
   end
 

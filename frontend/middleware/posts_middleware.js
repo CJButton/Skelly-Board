@@ -7,9 +7,11 @@ import {receivePost,
         requestAllPosts,
         REQUEST_ALL_POSTS,
         SUBMIT_POST,
+        DELETE_POST,
+        removePost,
         receiveErrors} from '../actions/posts_actions';
 
-import { getAllPosts, getPost, sendPost } from '../util/posts_api_util';
+import { getAllPosts, getPost, sendPost, deletePostAPI } from '../util/posts_api_util';
 
 const PostsMiddleware = ({ getState, dispatch }) => next => action => {
   const errorCallBack = xhr => dispatch(receiveErrors(xhr.responseJSON));
@@ -29,6 +31,11 @@ const PostsMiddleware = ({ getState, dispatch }) => next => action => {
         return next(action);
       }
       getPost(action.id, success, errorCallBack);
+      return next(action);
+
+    case DELETE_POST:
+      success = (post) => hashHistory.replace(`/`);
+      deletePostAPI(action.postId, success, errorCallBack);
       return next(action);
 
     case SUBMIT_POST:

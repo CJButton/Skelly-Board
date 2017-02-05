@@ -61,8 +61,8 @@ class PostsIndex extends React.Component{
       <div className="postsIndexInnerWrapper">
       {this.props.posts.map((post, i) => {
         return(
-          <Link to={`#/posts/${post.id}`}>
           <div key={i} className="indexPost" >
+            <a href={`#/posts/${post.id}`}>
             <div className="indexPostTop">
               <div>{post.username}</div>
               <div>{(post.time)}</div>
@@ -70,8 +70,8 @@ class PostsIndex extends React.Component{
             <div className="indexPostBottom">
               <div>{post.title}</div>
             </div>
+          </a>
         </div>
-      </Link>
         );
       })}
       </div>
@@ -80,15 +80,15 @@ class PostsIndex extends React.Component{
           isOpen={this.state.addModal}
           contentLabel="Modal2">
           <div className="addFormTop">
-          <h1 className="addFormTitle">Create your own Post:</h1>
-          <button className="closePostButton"
-            onClick={this.closeModal.bind(this)}>X</button>
+            <h1 className="addFormTitle">Create your own Post:</h1>
+            <button className="closePostButton button"
+              onClick={this.closeModal.bind(this)}>X</button>
           </div>
 
         <form className="addFormModal"
           onSubmit={this.handleSubmit.bind(this)}>
           <p className="addTitle">Title</p>
-          <input className="addReview-text"
+          <input className="addPost-text"
             type="text"
             placeholder="title"
             onChange={this.update("title")}
@@ -100,7 +100,7 @@ class PostsIndex extends React.Component{
             onChange={this.update("text")}
             value={this.state.text}></textarea>
 
-          <button className="review-submit button"
+          <button className="post-submit button"
             type="submit">Add Post!</button>
         </form>
 

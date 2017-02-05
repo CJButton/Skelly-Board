@@ -3,7 +3,8 @@
 
 import {RECEIVE_POST,
         RECEIVE_ERRORS,
-        RECEIVE_ALL_POSTS} from '../actions/posts_actions';
+        RECEIVE_ALL_POSTS,
+        REMOVE_POST} from '../actions/posts_actions';
 
 import { merge } from 'lodash';
 
@@ -18,6 +19,12 @@ const PostsReducer = (state = {}, action) => {
 
     case RECEIVE_ALL_POSTS:
       return merge({}, action.posts);
+
+    case REMOVE_POST:
+      let deletePostState = merge({}, state);
+      delete deletePostState.allPosts[action.post.id];
+      deletePostState.userPost = {};
+      return deletePostState;
 
     default:
       return state;

@@ -10,6 +10,15 @@ export const getPost = (id, success, error) => {
   });
 };
 
+export const deletePostAPI = (postId, success, errors) => {
+  $.ajax({
+    type: 'DELETE',
+    url: `api/posts/${postId}`,
+    success,
+    errors
+  });
+};
+
 export const getAllPosts = (success, error) => {
   $.ajax({
     type: 'GET',

@@ -6,8 +6,18 @@ export const RECEIVE_POSTS_ERRORS = "RECEIVE_POSTS_ERRORS";
 export const SUBMIT_POST = "SUBMIT_POST";
 export const RECEIVE_POST = "RECEIVE_POST";
 export const REQUEST_POST = "RECEIVE_POST";
+export const DELETE_POST = "DELETE_POST";
+export const REMOVE_POST = "REMOVE_POST";
 
+export const deletePost = (postId) => ({
+  type: DELETE_POST,
+  postId
+});
 
+export const removePost = (post) => ({
+  type: REMOVE_POST,
+  post
+});
 
 export const requestPost = (id) => ({
   type: REQUEST_POST,
