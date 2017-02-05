@@ -48,7 +48,7 @@ constructor(props) {
           <br></br>
           <br></br>
           {this.props.post.body}
-          {this.props.user.id === this.props.post.user_id ?
+          {this.props.user !== null && this.props.user.id === this.props.post.user_id ?
             <button className="deletePost button"
               onClick={this.deletePostModal.bind(this)}>Delete</button> : null}
         </div>
