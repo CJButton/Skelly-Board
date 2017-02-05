@@ -10,7 +10,7 @@ import values from 'lodash/values';
 // if user is logged in, then redirect them elsewhere
 const mapStateToProps = ({posts, session}) => ({
   user: session.currentUser,
-  posts: values(posts)
+  posts: values(posts).reverse()
 });
 
 const mapDispatchToProps = dispatch => ({

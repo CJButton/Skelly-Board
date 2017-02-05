@@ -51,6 +51,7 @@ class PostsIndex extends React.Component{
   }
 
   render() {
+    console.log(this.props);
     return (
     <div className="postsIndexWrapper">
       <div className="postIndexTop">
@@ -58,12 +59,12 @@ class PostsIndex extends React.Component{
           onClick={this.openAddModal.bind(this)}>Make a Post</button>
       </div>
       <div className="postsIndexInnerWrapper">
-      {this.props.posts.reverse().map((post, i) => {
+      {this.props.posts.map((post, i) => {
         return(
           <div key={i} className="indexPost">
             <a href={`#/posts/${post.id}`}>
               <div>{post.username}</div>
-              <div>{Date(post.created_at)}</div>
+              <div>{(post.time)}</div>
               <div>{post.title}</div>
             </a>
           </div>
