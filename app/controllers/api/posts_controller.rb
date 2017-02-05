@@ -31,6 +31,7 @@ end
     # @post = Post.delete(id: params[:id])
     # render json: @
     @post = Post.find(params[:id].to_i)
+    @comments = Comment.where(post_id: params[:id]).delete_all
     @post.destroy
     render json: @post
   end
