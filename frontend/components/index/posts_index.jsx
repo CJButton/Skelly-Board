@@ -61,13 +61,17 @@ class PostsIndex extends React.Component{
       <div className="postsIndexInnerWrapper">
       {this.props.posts.map((post, i) => {
         return(
-          <div key={i} className="indexPost">
-            <a href={`#/posts/${post.id}`}>
+          <Link to={`#/posts/${post.id}`}>
+          <div key={i} className="indexPost" >
+            <div className="indexPostTop">
               <div>{post.username}</div>
               <div>{(post.time)}</div>
+            </div>
+            <div className="indexPostBottom">
               <div>{post.title}</div>
-            </a>
-          </div>
+            </div>
+        </div>
+      </Link>
         );
       })}
       </div>
