@@ -107,13 +107,14 @@ class Comments extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return(
       <div className="commentsWrapper">
-        <p className="commentsDivider">Comments</p>
+        <div className="commentsTop">
           <button className="addCommentButton button"
-                  onClick={this.addCommentModal.bind(this)}>
-                  Add a Comment!</button>
+            onClick={this.addCommentModal.bind(this)}>
+            Add a Comment!</button>
+        </div>
+        <p className="commentsDivider">Comments</p>
 
                 {this.props.comments.map((comment, idx) => {
                   return (
