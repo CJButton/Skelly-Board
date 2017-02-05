@@ -20,6 +20,7 @@ class Api::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comments_params)
     if @comment.save
+      @comments = Comment.find_comments(comments_params[:post_id])
       render "api/comments/index"
     else
       render json: @comment.errors.full_messages, status: 422

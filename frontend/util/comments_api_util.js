@@ -42,8 +42,8 @@ export const getUserComment = (comments, success, error) => {
 export const editCommentAPI = (comment, success, error) => {
   $.ajax({
     type: 'PUT',
-    url: `api/comments/${comments.id}`,
-    data: comments,
+    url: `api/comments/${comment.id}`,
+    data: comment,
     success,
     error
   });

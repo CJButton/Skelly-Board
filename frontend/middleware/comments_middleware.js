@@ -7,7 +7,7 @@ import { submitComment,
          requestComments,
          REQUEST_COMMENTS,
          RECEIVE_COMMENT,
-         receiveComment ,
+         receiveAllComments ,
          REQUEST_USER_COMMENTS,
          receiveUserComments,
          DELETE_COMMENT,
@@ -40,7 +40,7 @@ const CommentsMiddleware = ({ getState, dispatch }) => next => action => {
       return next(action);
 
     case SUBMIT_COMMENT:
-      success = (comment) => dispatch(receiveComment(comment));
+      success = (comments) => dispatch(receiveAllComments(comments));
       sendComment(action.comment, success, errorCallBack);
       return next(action);
 

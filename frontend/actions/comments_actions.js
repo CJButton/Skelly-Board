@@ -3,7 +3,7 @@
 export const SUBMIT_COMMENT = "SUBMIT_COMMENT";
 export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
 export const REQUEST_COMMENTS = "REQUEST_COMMENTS";
-export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
+export const RECEIVE_ALL_COMMENTS = "RECEIVE_ALL_COMMENTS";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
 export const REQUEST_USER_COMMENTS = "REQUEST_USER_COMMENTS";
 export const RECEIVE_USER_COMMENTS = "RECEIVE_USER_COMMENTS";
@@ -49,16 +49,9 @@ export const receiveUserComments = (comment) => ({
   comment
 });
 
-export const receivePostComments = (comments) => ({
-  type: RECEIVE_COMMENTS,
+export const receiveAllComments = (comments) => ({
+  type: RECEIVE_ALL_COMMENTS,
   comments
-});
-
-// receive the comment that was just submitted to the db(to be added to
-// the store and later returned in comments.jsx)
-export const receiveComment = (comment) => ({
-  type: RECEIVE_COMMENT,
-  comment
 });
 
 export const editComment = (comment) => ({
