@@ -22,9 +22,9 @@ export const receiveCommentErrors = (errors) => ({
   errors
 });
 
-export const requestPostComments = (postId) => ({
+export const requestPostComments = (comment) => ({
   type: REQUEST_COMMENTS,
-  postId
+  comment
 });
 
 export const deleteComment = (commentId) => ({

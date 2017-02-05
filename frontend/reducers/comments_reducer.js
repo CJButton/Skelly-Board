@@ -13,11 +13,11 @@ const CommentsReducer = (state = {}, action) => {
   switch(action.type) {
 
     case RECEIVE_COMMENT:
-    const newPost = merge({}, action.post);
+    const newPost = merge({}, action.comments);
       return merge(newPost);
 
     case RECEIVE_ALL_COMMENTS:
-      return merge({}, action.posts);
+      return merge({}, action.comments);
 
     default:
       return state;

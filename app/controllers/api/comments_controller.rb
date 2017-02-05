@@ -3,8 +3,9 @@
 
 
 class Api::CommentsController < ApplicationController
+
   def index
-    # @reviews = Review.filter(params[:manga])
+    @comments = Comment.find_comments(params[:post_id])
   end
 
   def show

@@ -15,6 +15,7 @@ import PostContainer from './post/post_container';
 
 // actions
 import { requestAllPosts, requestPost } from '../actions/posts_actions';
+import { requestPostComments } from '../actions/comments_actions';
 
 
   const Root = ({store}) => {
@@ -38,7 +39,15 @@ import { requestAllPosts, requestPost } from '../actions/posts_actions';
   };
 
   const loadPost = (nextState) => {
+    let post_id = nextState.params.id;
+    let user_id = null;
+    let title = null;
+    let body = null;
+    let username = null;
+    let findComments = {post_id, user_id, title, body, username};
     store.dispatch(requestPost(nextState.params.id));
+    store.dispatch(requestPostComments(findComments));
+
   };
 
   return (

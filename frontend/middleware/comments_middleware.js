@@ -19,7 +19,6 @@ import { sendComment, getComments, getUserComments,
          deleteCommentAPI, editCommentAPI } from '../util/comments_api_util';
 
 const CommentsMiddleware = ({ getState, dispatch }) => next => action => {
-
   const errorCallBack = xhr => dispatch(receiveCommentErrors(xhr.responseJSON));
   let success;
 
@@ -30,7 +29,7 @@ const CommentsMiddleware = ({ getState, dispatch }) => next => action => {
       return next(action);
 
     case REQUEST_COMMENTS:
-      success = (comments) => dispatch(receiveComments(comments));
+      success = (comments) => dispatch(receiveAllComments(comments));
       getComments(action.comment, success, errorCallBack);
       return next(action);
 

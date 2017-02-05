@@ -101,11 +101,23 @@ class Comments extends React.Component {
   render() {
     console.log(this.props);
     return(
-      <div className="comments">
+      <div className="commentsWrapper">
         <p>Testing comments Component!</p>
           <button className="addCommentButton button"
                   onClick={this.addCommentModal.bind(this)}>
                   Add a Comment!</button>
+
+                {this.props.comments.map((comment, idx) => {
+                  return (
+                    <div key={idx} className="indivComments">
+                      {comment.username}
+                      <br></br>
+                      <br></br>
+                      {comment.body}
+                    </div>
+                  );
+
+                })}
 
 
             <Modal className="addModal"
@@ -119,11 +131,6 @@ class Comments extends React.Component {
 
                   <form className="addFormModal"
                     onSubmit={this.handleSubmit.bind(this)}>
-                    <p className="addTitle">Title</p>
-                    <input className="addComment-text"
-                      type="text"
-                      onChange={this.update("title")}
-                      value={this.state.title}></input>
 
                     <p className="addDescription">Body</p>
                     <textarea className="addComment-textarea"
