@@ -91,7 +91,9 @@ class Comments extends React.Component {
     this.setState({
       editModal: false,
       deleteModal: false,
-      addModal: false
+      addModal: false,
+      title: "",
+      text: ""
     });
   }
 
@@ -100,6 +102,38 @@ class Comments extends React.Component {
     return(
       <div className="comments">
         <p>Testing comments Component!</p>
+          <button className="addCommentButton button"
+                  onClick={this.addCommentModal.bind(this)}>
+                  Add a Comment!</button>
+
+
+            <Modal className="addModal"
+                  isOpen={this.state.addModal}
+                  contentLabel="Modal3">
+                  <div className="addFormTop">
+                    <h1 className="addFormTitle">Add a Comment:</h1>
+                    <button className="closeEditButton"
+                      onClick={this.closeModal.bind(this)}>X</button>
+                  </div>
+
+                  <form className="addFormModal"
+                    onSubmit={this.handleSubmit.bind(this)}>
+                    <p className="addTitle">Title</p>
+                    <input className="addComment-text"
+                      type="text"
+                      onChange={this.update("title")}
+                      value={this.state.title}></input>
+
+                    <p className="addDescription">Body</p>
+                    <textarea className="addComment-textarea"
+                      onChange={this.update("text")}
+                      value={this.state.text}></textarea>
+
+                    <button className="comment-submit button"
+                      type="submit">Submit!</button>
+                  </form>
+
+                </Modal>
       </div>
     );
   }

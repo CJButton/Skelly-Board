@@ -1,7 +1,6 @@
 
 
 
-# json.array! @posts, :id, :username, :title, :created_at
 
 json.array! @posts do |post|
 
