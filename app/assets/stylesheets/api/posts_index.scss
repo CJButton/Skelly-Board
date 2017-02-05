@@ -1,0 +1,19 @@
+
+
+.createPost {
+  background-color: white;
+  border-radius: 3px;
+  border-width: 3px;
+  border-color: black;
+  font-size: 18px;
+}
+
+.postIndexTop {
+  display: flex;
+  justify-content: center;
+}
+
+.createPost:hover {
+  background-color: blue;
+  color: white;
+}

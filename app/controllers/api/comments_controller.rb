@@ -9,13 +9,6 @@ class Api::CommentsController < ApplicationController
   end
 
   def show
-    # @review = Review.find_by(manga_id: params[:id].to_i,
-    # user_id: current_user.id)
-    # if @review.blank?
-    #   return nil
-    # else
-    #   @review
-    # end
   end
 
   def create
@@ -30,8 +23,8 @@ class Api::CommentsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find(params[:id].to_i)
-    @review.destroy
+    @comment = Comment.where(params[:id])
+    @comment.destroy
     render json: @review
   end
 
@@ -44,7 +37,7 @@ class Api::CommentsController < ApplicationController
 
   private
   def comments_params
-    params.require(:comment).permit(:post_id, :user_id, :title, :body, :username)
+    params.require(:comment).permit(:post_id, :user_id, :body, :username)
   end
 
 end

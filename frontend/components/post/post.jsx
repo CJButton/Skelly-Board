@@ -20,9 +20,8 @@ constructor(props) {
   render() {
     console.log(this.props);
     return (
-      <div>
-        <p>"Testing Post Component"</p>
-        <div>
+      <div className="postComponentWrapper">
+        <div className="postWrapper">
           {this.props.post.username}
           <br></br>
           {this.props.post.title}

@@ -1,0 +1,55 @@
+
+
+.warningHide {
+  display: none;
+}
+
+.newUserHide {
+  display: none;
+}
+
+.topbar-header {
+  display: flex;
+  justify-content: flex-end;
+  height: 45px;
+}
+
+.logoutUserButton {
+  background-color: white;
+  border-radius: 3px;
+  border-width: 3px;
+  border-color: black;
+  font-size: 18px;
+}
+
+.logoutUserButton:hover {
+  background-color: red;
+  color: white;
+}
+
+.createUserButton {
+  background-color: white;
+  border-radius: 3px;
+  border-width: 3px;
+  border-color: black;
+  font-size: 18px;
+  margin-right: 15px;
+}
+
+.createUserButton:hover {
+  background-color: orange;
+  color: black;
+}
+
+.loginUserButton {
+  background-color: white;
+  border-radius: 3px;
+  border-width: 3px;
+  border-color: black;
+  font-size: 18px;
+}
+
+.loginUserButton:hover {
+  background-color: blue;
+  color: white;
+}

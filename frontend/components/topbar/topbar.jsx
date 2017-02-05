@@ -137,17 +137,16 @@ class TopBar extends React.Component{
   render() {
     return (
       <header className="topbar-header">
-          <p>Welcome to the barebones Skelly Board!</p>
-          {this.props.currentUser === null ?<div className="loggedInDiv">
-             <button className="createUserButton"
+          {this.props.currentUser === null ? <div className="loggedInDiv">
+             <button className="createUserButton button"
                   onClick={this.createUserModal.bind(this)}>Create User</button>
 
-              <button className="loginUserButton"
+                <button className="loginUserButton button"
                     onClick={this.loginUserModal.bind(this)}>Login!</button></div>:
                   null}
 
           {this.props.currentUser !== null ?
-            <button className="logoutUserButton"
+            <button className="logoutUserButton button"
               onClick={this.props.logout.bind(this)}>Logout!</button>: null}
 
             <Modal className="createUser"

@@ -13,6 +13,7 @@ class Comments extends React.Component {
       editModal: false,
       deleteModal: false,
       addModal: false,
+      errorModal: false,
       title: "",
       text: "",
       allComments: values(this.props.allComments),
@@ -36,12 +37,11 @@ class Comments extends React.Component {
   // collect all the data here before sending it off to be added to db
   handleSubmit(e) {
     e.preventDefault();
-    let user_id = this.props.user.id;
-    let title = this.state.title;
+    let user_id = (this.props.user !== null) ? this.props.user.id : null;
     let body = this.state.text;
     let username = this.props.user.username;
     let post_id = this.props.post.id;
-    const newComment = {comment: {post_id, user_id, title, body, username}};
+    const newComment = {comment: {post_id, user_id, body, username}};
     this.props.submitComment(newComment);
     this.setState({
       title: "",
@@ -55,8 +55,15 @@ class Comments extends React.Component {
   }
 
   addCommentModal() {
+    (this.props.user === null) ? this.errorModal() :
     this.setState({
       addModal: true
+    });
+  }
+
+  errorModal() {
+    this.setState({
+      errorModal: true
     });
   }
 
@@ -93,6 +100,7 @@ class Comments extends React.Component {
       editModal: false,
       deleteModal: false,
       addModal: false,
+      errorModal: false,
       title: "",
       text: ""
     });
@@ -102,7 +110,7 @@ class Comments extends React.Component {
     console.log(this.props);
     return(
       <div className="commentsWrapper">
-        <p>Testing comments Component!</p>
+        <p className="commentsDivider">Comments</p>
           <button className="addCommentButton button"
                   onClick={this.addCommentModal.bind(this)}>
                   Add a Comment!</button>
@@ -113,11 +121,32 @@ class Comments extends React.Component {
                       {comment.username}
                       <br></br>
                       <br></br>
-                      {comment.body}
+                      <div className="commentDescri">
+                        {comment.body.split("\n").map((com, idx2) => {
+                          return(
+                            <span key={idx2}>{com}<br/></span>
+                          );
+                        })}
+
+                      </div>
+
                     </div>
                   );
 
                 })}
+
+              <Modal className="errorModal"
+                    isOpen={this.state.errorModal}
+                    contentLabel="Modal4">
+                    <div className="addFormTop">
+                      <button className="closeEditButton"
+                        onClick={this.closeModal.bind(this)}>X</button>
+                      <h3 className="errorTitle">
+                        You must be logged in to leave a comment.
+                      </h3>
+                    </div>
+
+                  </Modal>
 
 
             <Modal className="addModal"

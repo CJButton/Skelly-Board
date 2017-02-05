@@ -41,10 +41,9 @@ import { requestPostComments } from '../actions/comments_actions';
   const loadPost = (nextState) => {
     let post_id = nextState.params.id;
     let user_id = null;
-    let title = null;
     let body = null;
     let username = null;
-    let findComments = {post_id, user_id, title, body, username};
+    let findComments = {post_id, user_id, body, username};
     store.dispatch(requestPost(nextState.params.id));
     store.dispatch(requestPostComments(findComments));
 

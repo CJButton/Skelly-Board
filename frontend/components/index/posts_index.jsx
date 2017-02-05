@@ -51,12 +51,13 @@ class PostsIndex extends React.Component{
   }
 
   render() {
-    console.log(this.props);
     return (
     <div className="postsIndexWrapper">
-      <div className="postsIndexInnerWrapper">
+      <div className="postIndexTop">
         <button className="createPost button"
           onClick={this.openAddModal.bind(this)}>Make a Post</button>
+      </div>
+      <div className="postsIndexInnerWrapper">
       {this.props.posts.reverse().map((post, i) => {
         return(
           <div key={i} className="indexPost">

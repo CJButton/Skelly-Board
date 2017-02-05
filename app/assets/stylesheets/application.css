@@ -19,7 +19,11 @@ html {
 }
 
 body {
-   background-color: purple;
-   font-family: 'Lato', serif;
+   background-color: #366D7F;
+   font-family: 'Open Sans', sans-serif;
    height: 100%;
+ }
+
+ .button:hover {
+   cursor: pointer;
  }
