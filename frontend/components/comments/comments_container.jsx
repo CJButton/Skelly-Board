@@ -9,8 +9,9 @@ import { submitComment, deleteComment, editComment }
 import values from 'lodash/values';
 import Comments from './comments';
 
-const mapStateToProps = ( {comments, session} ) => ({
+const mapStateToProps = ( {comments, session, posts} ) => ({
   user: session.currentUser,
+  post: posts
 });
 // allComments: values(comments)[0],
 // userComment: comments.userComments

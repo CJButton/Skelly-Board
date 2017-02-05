@@ -18,7 +18,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(post_params)
+    @comment = Comment.new(comments_params)
     if @comment.save
       render "api/comments/index"
     else
@@ -42,7 +42,7 @@ class Api::CommentsController < ApplicationController
 
   private
   def comments_params
-    params.require(:comment).permit(:user_id, :title, :body, :username)
+    params.require(:comment).permit(:post_id, :user_id, :title, :body, :username)
   end
 
 end

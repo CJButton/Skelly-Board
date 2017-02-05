@@ -40,7 +40,8 @@ class Comments extends React.Component {
     let title = this.state.title;
     let body = this.state.text;
     let username = this.props.user.username;
-    const newComment = {comment: {user_id, title, body, username}};
+    let post_id = this.props.post.id;
+    const newComment = {comment: {post_id, user_id, title, body, username}};
     this.props.submitComment(newComment);
     this.setState({
       title: "",
