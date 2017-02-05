@@ -8,6 +8,18 @@ export const RECEIVE_POST = "RECEIVE_POST";
 export const REQUEST_POST = "RECEIVE_POST";
 export const DELETE_POST = "DELETE_POST";
 export const REMOVE_POST = "REMOVE_POST";
+export const EDIT_REVIEW = "EDIT_REVIEW";
+export const RECEIVE_EDIT = "RECEIVE_EDIT";
+
+export const editPost = (post) => ({
+  type: EDIT_REVIEW,
+  post
+});
+
+export const receiveEdit = (post) => ({
+  type: RECEIVE_EDIT,
+  post
+});
 
 export const deletePost = (postId) => ({
   type: DELETE_POST,
