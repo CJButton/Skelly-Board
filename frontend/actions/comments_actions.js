@@ -12,13 +12,9 @@ export const DELETE_COMMENT = "DELETE_COMMENT";
 export const EDIT_COMMENT = "EDIT_COMMENT";
 export const RECEIVE_EDIT = "RECEIVE_EDIT";
 
-export const submitComment = (userId, postId, title, body, username) => ({
+export const submitComment = (comment) => ({
   type: SUBMIT_COMMENT,
-  userId,
-  postId,
-  title,
-  body,
-  username
+  comment
 });
 
 export const receiveCommentErrors = (errors) => ({
@@ -65,11 +61,9 @@ export const receiveComment = (comment) => ({
   comment
 });
 
-export const editComment = (commentId, title, text) => ({
+export const editComment = (comment) => ({
   type: EDIT_COMMENT,
-  commentId,
-  title,
-  text
+  comment
 });
 
 export const receiveEdit = (comment) => ({
