@@ -9,9 +9,12 @@ import {receivePost,
         SUBMIT_POST,
         DELETE_POST,
         removePost,
+        EDIT_POST,
+        receiveEdit,
         receiveErrors} from '../actions/posts_actions';
 
-import { getAllPosts, getPost, sendPost, deletePostAPI } from '../util/posts_api_util';
+import { getAllPosts, getPost, sendPost, deletePostAPI, editPostAPI
+                                    } from '../util/posts_api_util';
 
 const PostsMiddleware = ({ getState, dispatch }) => next => action => {
   const errorCallBack = xhr => dispatch(receiveErrors(xhr.responseJSON));
@@ -41,6 +44,11 @@ const PostsMiddleware = ({ getState, dispatch }) => next => action => {
     case SUBMIT_POST:
       success = (post) => hashHistory.replace(`posts/${post.id}`);
       sendPost(action.postInfo, success, errorCallBack);
+      return next(action);
+
+    case EDIT_POST:
+      success = (post) => dispatch(receiveEdit(post));
+      editPostAPI(action.post, success, errorCallBack);
       return next(action);
 
     default:

@@ -14,7 +14,9 @@ constructor(props) {
 
     this.state = {
       deleteModal: false,
-      editModal: false
+      editModal: false,
+      body: "",
+      title: ""
     };
 
   }
@@ -31,12 +33,14 @@ constructor(props) {
   }
 
   editPost() {
+    let id = this.props.post.id;
     let user_id = this.props.user.id;
     let title = this.state.title;
     let body = this.state.body;
     let username = this.props.user.username;
-    let post = {post: {user_id, title, body, username}};
+    let post = {id, user_id, title, body, username};
     this.props.editPost(post);
+    this.closeModal();
   }
 
   deletePostModal() {
@@ -115,7 +119,7 @@ constructor(props) {
               <p className="editDescription">Body</p>
               <textarea className="edit-textarea"
                 placeholder="What would you like to say?"
-                onChange={this.update("text")}
+                onChange={this.update("body")}
                 value={this.state.text}></textarea>
 
               <button className="post-submit button"

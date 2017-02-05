@@ -1,5 +1,5 @@
 
-
+require 'byebug'
 
 class Api::PostsController < ApplicationController
 
@@ -14,22 +14,18 @@ class Api::PostsController < ApplicationController
   def create
   @post = Post.new(posts_params)
 
-  if @post.save
-    render "api/posts/show"
-  else
-    render(
-      json: ["Title/Text cannot be blank"],
-      status: 401
-    )
+    if @post.save
+      render "api/posts/show"
+    else
+      render(
+        json: ["Title/Text cannot be blank"],
+        status: 401
+      )
+    end
+
   end
 
-end
-
-  # need to delete all comments associated with this post later
   def destroy
-    # p params
-    # @post = Post.delete(id: params[:id])
-    # render json: @
     @post = Post.find(params[:id].to_i)
     @comments = Comment.where(post_id: params[:id]).delete_all
     @post.destroy
@@ -37,14 +33,19 @@ end
   end
 
   def update
-  @post = Post.update(posts_paras)
-  render json: @post
+    @post = Post.update(params[:id].to_i, posts_params)
+    render "api/posts/show"
+
+    # 
+    # params[:id].to_i, :rating => params[:rating],
+    #         :title => params[:title], :description => params[:text]
+
 end
 
   private
 
   def posts_params
-    params.require(:post).permit(:user_id, :title, :body, :username)
+    params.require(:post).permit(:id, :user_id, :title, :body, :username)
   end
 
 end

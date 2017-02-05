@@ -1,5 +1,13 @@
 
-
+export const editPostAPI = (post, success, error) => {
+  $.ajax({
+    type: 'PUT',
+    url: `api/posts/${post.id}`,
+    data: {post},
+    success,
+    error
+  });
+};
 
 export const getPost = (id, success, error) => {
   $.ajax({
