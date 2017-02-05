@@ -4,16 +4,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { submitComment, deleteComment, editComment }
-         from '../../actions/comment_actions';
+         from '../../actions/comments_actions';
 
 import values from 'lodash/values';
 import Comments from './comments';
 
 const mapStateToProps = ( {comments, session} ) => ({
   user: session.currentUser,
-  allComments: values(comments)[0],
-  userComment: comments.userComments
 });
+// allComments: values(comments)[0],
+// userComment: comments.userComments
 
 const mapDispatchToProps = dispatch => ({
   submitComment: (userId, title, text, username) =>

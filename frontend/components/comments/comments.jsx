@@ -5,7 +5,6 @@ import React from 'react';
 import Modal from 'react-modal';
 import values from 'lodash/values';
 
-
 class Comments extends React.Component {
   constructor(props) {
     super(props);
@@ -97,91 +96,93 @@ class Comments extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return(
       <div className="comments">
-        <div className="addCommentButtonContainer">
-          {this.props.user !== undefined ? null :
-          <button className="addCommentButton button"
-            onClick={this.addCommentModal.bind(this)}>
-            Add a Comment!</button>}
-        </div>
-
-
-        <Modal className="addModal"
-          isOpen={this.state.addModal}
-          contentLabel="Modal3">
-          <div className="addFormTop">
-          <h1 className="addFormTitle">Add a Comment:</h1>
-          <button className="closeEditButton"
-            onClick={this.closeModal.bind(this)}>X</button>
-          </div>
-
-        <form className="addFormModal"
-          onSubmit={this.handleSubmit.bind(this)}>
-          <p className="addTitle">Title</p>
-          <input className="addComment-text"
-            type="text"
-            onChange={this.update("title")}
-            value={this.state.title}></input>
-
-          <p className="addDescription">Body</p>
-          <textarea className="addComment-textarea"
-            onChange={this.update("text")}
-            value={this.state.text}></textarea>
-
-          <button className="comment-submit button"
-            type="submit">Submit!</button>
-        </form>
-
-        </Modal>
-
-        {this.state.allComments.length === 0 ? null :
-          this.state.allComments.map((comment, idx) => {
-            return(
-              <div className="comment basicOutline" key={idx}>
-
-                  <div className="userComTitle">
-                    <div className="userComtitle-top">
-                      {comment.username}
-                    </div>
-                    <div className="userComTitle-bottom">
-
-                      <div className="userComTitle-title">{comment.title}</div>
-                      <div className={comment.user_id === this.props.user.id
-                            ? "deleteEdit" : "hide"}>
-
-                            <div className="userComment-top">
-                              <div className="userComment-buttons">
-                                <button className="editButton button comButton"
-                                    onClick={this.editCommentModal.bind(this)}>
-                                      Edit</button>
-                                    <button className="deleteButton button comButton"
-                                    onClick={this.deleteCommentModal.bind(this)}>
-                                      Delete</button>
-                              </div>
-                            </div>
-
-                        </div>
-                      </div>
-                  </div>
-                  <div className="userRevDescrip">
-                  {comment.body.split("\n").map((rev, idx2) => {
-                    return(
-                      <span key={idx2}>{rev}<br/></span>
-                    );
-                  })}
-
-                  </div>
-
-              </div>
-            );
-          }) }
+        <p>Testing comments Component!</p>
       </div>
     );
   }
 }
 
 export default Comments;
+// <div className="addCommentButtonContainer">
+//   {this.props.user !== undefined ? null :
+//     <button className="addCommentButton button"
+//       onClick={this.addCommentModal.bind(this)}>
+//       Add a Comment!</button>}
+//     </div>
+//
+//
+//     <Modal className="addModal"
+//       isOpen={this.state.addModal}
+//       contentLabel="Modal3">
+//       <div className="addFormTop">
+//         <h1 className="addFormTitle">Add a Comment:</h1>
+//         <button className="closeEditButton"
+//           onClick={this.closeModal.bind(this)}>X</button>
+//       </div>
+//
+//       <form className="addFormModal"
+//         onSubmit={this.handleSubmit.bind(this)}>
+//         <p className="addTitle">Title</p>
+//         <input className="addComment-text"
+//           type="text"
+//           onChange={this.update("title")}
+//           value={this.state.title}></input>
+//
+//         <p className="addDescription">Body</p>
+//         <textarea className="addComment-textarea"
+//           onChange={this.update("text")}
+//           value={this.state.text}></textarea>
+//
+//         <button className="comment-submit button"
+//           type="submit">Submit!</button>
+//       </form>
+//
+//     </Modal>
+//
+//     {this.state.allComments.length === 0 ? null :
+//       this.state.allComments.map((comment, idx) => {
+//         return(
+//           <div className="comment basicOutline" key={idx}>
+//
+//             <div className="userComTitle">
+//               <div className="userComtitle-top">
+//                 {comment.username}
+//               </div>
+//               <div className="userComTitle-bottom">
+//
+//                 <div className="userComTitle-title">{comment.title}</div>
+//                 <div className={comment.user_id === this.props.user.id
+//                     ? "deleteEdit" : "hide"}>
+//
+//                     <div className="userComment-top">
+//                       <div className="userComment-buttons">
+//                         <button className="editButton button comButton"
+//                           onClick={this.editCommentModal.bind(this)}>
+//                           Edit</button>
+//                         <button className="deleteButton button comButton"
+//                           onClick={this.deleteCommentModal.bind(this)}>
+//                           Delete</button>
+//                       </div>
+//                     </div>
+//
+//                   </div>
+//                 </div>
+//               </div>
+//               <div className="userRevDescrip">
+//                 {comment.body.split("\n").map((rev, idx2) => {
+//                   return(
+//                     <span key={idx2}>{rev}<br/></span>
+//                   );
+//                 })}
+//
+//               </div>
+//
+//             </div>
+//           );
+//         }) }
 
 // <div className="deleteModalContainer">
 //   <Modal className="deleteModal"

@@ -4,6 +4,8 @@ import React from 'react';
 
 import {hashHistory} from 'react-router';
 
+import Comments from '../comments/comments_container';
+
 
 class Post extends React.Component{
 constructor(props) {
@@ -28,7 +30,8 @@ constructor(props) {
           <br></br>
           {this.props.post.body}
         </div>
-        
+        <Comments/>
+
       </div>
     );
   }
