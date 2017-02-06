@@ -1,5 +1,4 @@
 
-require 'byebug'
 
 class Api::PostsController < ApplicationController
 
@@ -35,11 +34,6 @@ class Api::PostsController < ApplicationController
   def update
     @post = Post.update(params[:id].to_i, posts_params)
     render "api/posts/show"
-
-    # 
-    # params[:id].to_i, :rating => params[:rating],
-    #         :title => params[:title], :description => params[:text]
-
 end
 
   private

@@ -7,7 +7,6 @@ import Modal from 'react-modal';
 
 import Comments from '../comments/comments_container';
 
-
 class Post extends React.Component{
 constructor(props) {
   super(props);
@@ -58,12 +57,13 @@ constructor(props) {
   closeModal() {
     this.setState({
       deleteModal: false,
-      editModal: false
+      editModal: false,
+      title: "",
+      body: ""
     });
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="postComponentWrapper">
         <div className="postWrapper">
