@@ -28,18 +28,18 @@ gem 'faker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'rspec-rails'
 gem 'devise'
 gem 'rspec'
 gem 'rails_12factor'
+gem 'pry-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'better_errors'
-  gem 'pry-rails'
   gem 'annotate'
   gem 'binding_of_caller'
   gem 'faker'
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'sqlite3'
 
