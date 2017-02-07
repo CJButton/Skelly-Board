@@ -1,5 +1,54 @@
 
 
+.createUser {
+  position: fixed;
+  top: 10%;
+  left: 24.5%;
+  background-color: white;
+  padding: 15px;
+  height: 60%;
+  width: 50%;
+  color: black;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: black;
+}
+
+.closeModalButton {
+  height: 35px;
+  font-size: 25px;
+  background-color: white;
+  border-radius: 3px;
+  border-width: 1px;
+  border-color: black;
+  margin-top: 8px;
+}
+
+.closeModalButton:hover {
+  background-color: red;
+  color: white;
+}
+
+.user-submit {
+  background-color: white;
+  border-radius: 3px;
+  border-width: 3px;
+  border-color: black;
+  font-size: 18px;
+}
+
+.user-submit:hover {
+  background-color: blue;
+  color: white;
+}
+
+.createUserForm input {
+  width: 175px;
+}
+
 .warningHide {
   display: none;
 }
@@ -8,10 +57,27 @@
   display: none;
 }
 
+.warningShow {
+  color: red;
+}
+
+.createUserModalWrapper  {
+  display: flex;
+  justify-content: space-between;
+}
+
 .topbar-header {
   display: flex;
   justify-content: flex-end;
   height: 45px;
+}
+
+.createUserName {
+  width: 200px;
+}
+
+.loginUser-password {
+  width: 200px;
 }
 
 .logoutUserButton {
@@ -37,8 +103,8 @@
 }
 
 .createUserButton:hover {
-  background-color: orange;
-  color: black;
+  background-color: blue;
+  color: white;
 }
 
 .loginUserButton {
@@ -52,4 +118,58 @@
 .loginUserButton:hover {
   background-color: blue;
   color: white;
+}
+
+.loginUserSubmit {
+  background-color: white;
+  border-radius: 3px;
+  border-width: 3px;
+  border-color: black;
+  font-size: 18px;
+  margin-left: 147px;
+}
+
+.loginUserSubmit:hover {
+  background-color: blue;
+  color: white;
+}
+
+.signInTitle {
+  margin-left: 140px;
+}
+
+.loginUsername {
+  margin-left: 155px;
+}
+
+.createUserName {
+  width: 75%;
+  margin-left: 40px;
+}
+
+.loginUserPass {
+  margin-left: 155px;
+}
+
+.loginUser-password {
+  width: 75%;
+  margin-left: 40px;
+}
+
+.loginUser {
+  position: fixed;
+  top: 10%;
+  left: 35%;
+  background-color: white;
+  padding: 15px;
+  height: 45%;
+  width: 27%;
+  color: black;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: black;
+
 }

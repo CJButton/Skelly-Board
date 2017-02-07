@@ -152,76 +152,91 @@ class TopBar extends React.Component{
             <Modal className="createUser"
                 isOpen={this.state.createUser}
                 contentLabel="Modal2">
-                <h1 className="editFormTitle">Sign Up!</h1>
-                {this.renderErrors()}
-                <button className="closeModalButton"
-                  onClick={this.closeModal.bind(this)}>X</button>
 
-              <form className="createUserForm"
-                onSubmit={this.handleSignup.bind(this)}>
-                <p>Username</p>
-                <input className="createUserName"
+              <div className="addFormTop">
+                <h1 className="editFormTitle">Sign Up!</h1>
+                <button className="closeModalButton button"
+                  onClick={this.closeModal.bind(this)}>X</button>
+              </div>
+
+              <div className="createUserModalWrapper">
+
+              <div className="createUserForm">
+                <form className="createUserForm"
+                  onSubmit={this.handleSignup.bind(this)}>
+                  <p>Username</p>
+                  <input className="createUserName"
                     type="text"
                     placeholder="Username"
                     onChange={this.update("username")}
                     value={this.state.username}></input>
 
-                <p>Password</p>
+                  <p>Password</p>
+                  <input className="editReview-input"
+                    type="password"
+                    placeholder="Password"
+                    onChange={this.update("password1")}
+                    value={this.state.password1}></input>
+
+                  <p>Please re-enter your password.</p>
+                  <input className="editReview-input"
+                    type="password"
+                    placeholder="Re-enter your password"
+                    onChange={this.update("password2")}
+                    value={this.state.password2}></input>
+
+                  <p>Your email</p>
+                  <input  className="createUserEmail"
+                    placeholder="Email"
+                    onChange={this.update("email")}
+                    value={this.state.email}></input>
+                  <br></br>
+                  <br></br>
+                  <button className="user-submit button"
+                    type="submit">Submit!</button>
+                </form>
+              </div>
+              <div className="createUserErrors">
+                {this.renderErrors()}
                 <div className={this.state.warning}>Oh no! The passwords don't match!</div>
-                <input className="editReview-input"
-                  type="password"
-                  placeholder="Password"
-                  onChange={this.update("password1")}
-                  value={this.state.password1}></input>
-
-                <p>Please re-enter your password.</p>
-                <div className={this.state.warning}>Oh no! the passwords don't match!</div>
-                <input className="editReview-input"
-                  type="password"
-                  placeholder="Re-enter your password"
-                  onChange={this.update("password2")}
-                  value={this.state.password2}></input>
-
-                <p>Your email</p>
-                <input  className="createUserEmail"
-                  placeholder="Email"
-                  onChange={this.update("email")}
-                  value={this.state.email}></input>
-
-                <button className="review-submit button"
-                  type="submit">Submit!</button>
-              </form>
-
+              </div>
+            </div>
               </Modal>
 
               <Modal className="loginUser"
                   isOpen={this.state.loginUser}
                   contentLabel="Modal3">
-                  <h1 className="signInTitle">Sign In!</h1>
-                  {this.renderErrors()}
-                  <button className="closeModalButton"
-                    onClick={this.closeModal.bind(this)}>X</button>
+
+                  <div className="addFormTop">
+                    <h1 className="signInTitle">Sign In!</h1>
+                    <button className="closeModalButton button"
+                      onClick={this.closeModal.bind(this)}>X</button>
+                  </div>
+
+
 
                   <form className="loginUserForm"
                   onSubmit={this.handleLogin.bind(this)}>
-                  <p>Username</p>
+                  <p className="loginUsername">Username</p>
                   <input className="createUserName"
                       type="text"
                       placeholder="Username"
                       onChange={this.update("username")}
                       value={this.state.username}></input>
 
-                  <p>Password</p>
+                  <p className="loginUserPass">Password</p>
                   <input className="loginUser-password"
                     type="password"
                     placeholder="Password"
                     onChange={this.update("password1")}
                     value={this.state.password1}></input>
-
+                  <br></br>
+                  <br></br>
                   <button className="loginUserSubmit button"
                     type="submit">Submit!</button>
                 </form>
 
+                {this.renderErrors()}
                 </Modal>
       </header>
 

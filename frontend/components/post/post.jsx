@@ -66,6 +66,13 @@ constructor(props) {
   render() {
     return (
       <div className="postComponentWrapper">
+        {this.props.user !== null && this.props.user.id === this.props.post.user_id ?
+          <div className="editDeleteWrapper">
+            <button className="deletePost button"
+              onClick={this.deletePostModal.bind(this)}>Delete</button>
+            <button className="editPost button"
+              onClick={this.editPostModal.bind(this)}>Edit</button>
+          </div>: null}
         <div className="postWrapper">
           {this.props.post.username}
           <br></br>
@@ -73,27 +80,20 @@ constructor(props) {
           <br></br>
           <br></br>
           {this.props.post.body}
-          {this.props.user !== null && this.props.user.id === this.props.post.user_id ?
-            <div>
-            <button className="deletePost button"
-              onClick={this.deletePostModal.bind(this)}>Delete</button>
-            <button className="editPost button"
-              onClick={this.editPostModal.bind(this)}>Edit</button>
-            </div>: null}
         </div>
 
         <div className="deleteModalContainer">
           <Modal className="deleteModal"
             isOpen={this.state.deleteModal}
             contentLabel="Modal">
-            <div>Sure you want to delete your post?</div>
-            <div className="deleteEditClose">
-              <button className="deleteButton button"
-                onClick={this.deletePost.bind(this)}>
-                Yes, delete it!</button>
-              <button className="cancelDelete button"
-                onClick={this.closeModal.bind(this)}>No! Leave as is!</button>
-            </div>
+              <h2 className="deleteTitle">Sure you want to delete your post?</h2>
+              <div className="deleteEditClose">
+                <button className="deletePost button"
+                  onClick={this.deletePost.bind(this)}>
+                  Yes, delete it!</button>
+                <button className="editPost button"
+                  onClick={this.closeModal.bind(this)}>No! Leave as is!</button>
+              </div>
           </Modal>
         </div>
 
@@ -101,8 +101,9 @@ constructor(props) {
           <Modal className="editModal"
             isOpen={this.state.editModal}
             contentLabel="Modal4">
+
             <div className="editFormTop">
-              <h1 className="editFormTitle">Edit your Post:</h1>
+              <h2 className="editFormTitle">Edit your Post:</h2>
               <button className="closePostButton button"
                 onClick={this.closeModal.bind(this)}>X</button>
             </div>

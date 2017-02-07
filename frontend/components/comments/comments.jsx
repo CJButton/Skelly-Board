@@ -82,19 +82,6 @@ class Comments extends React.Component {
     });
   }
 
-  // editCommentModal() {
-  //   this.setState({
-  //     editModal: true
-  //   });
-  // }
-
-  // handleEdit(reviewId){
-  //   this.props.editReview(this.state.userReview.id, this.state.userRating, this.state.title, this.state.text);
-  //   this.setState({
-  //     editModal: false
-  //   });
-  // }
-
   closeModal() {
     this.setState({
       editModal: false,
@@ -155,7 +142,7 @@ class Comments extends React.Component {
                   contentLabel="Modal3">
                   <div className="addFormTop">
                     <h1 className="addFormTitle">Add a Comment:</h1>
-                    <button className="closeEditButton"
+                    <button className="closeModalButton button"
                       onClick={this.closeModal.bind(this)}>X</button>
                   </div>
 
@@ -167,7 +154,7 @@ class Comments extends React.Component {
                       onChange={this.update("text")}
                       value={this.state.text}></textarea>
 
-                    <button className="comment-submit button"
+                    <button className="user-submit button"
                       type="submit">Submit!</button>
                   </form>
 

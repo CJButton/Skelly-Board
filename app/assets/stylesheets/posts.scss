@@ -2,6 +2,104 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.editModal {
+  position: fixed;
+  top: 10%;
+  left: 24.5%;
+  background-color: white;
+  padding: 15px;
+  height: 55%;
+  width: 50%;
+  color: black;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: black;
+}
+
+.editFormTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.editPost-text {
+  width: 98%;
+  height: 20px;
+}
+
+.edit-textarea {
+  width: 98%;
+  height: 100px;
+}
+
+.deleteTitle {
+  display: flex;
+  justify-content: center;
+}
+
+.deleteEditClose {
+  display: flex;
+  justify-content: center;
+}
+
+.signInTitle {
+  margin-left: 140px;
+}
+
+.deleteModal {
+  position: fixed;
+  top: 10%;
+  left: 24.5%;
+  background-color: white;
+  padding: 15px;
+  height: 17%;
+  width: 50%;
+  color: black;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: black;
+}
+
+
+.deletePost {
+  background-color: white;
+  border-radius: 3px;
+  border-width: 3px;
+  border-color: black;
+  font-size: 18px;
+}
+
+.editPost {
+  background-color: white;
+  border-radius: 3px;
+  border-width: 3px;
+  border-color: black;
+  font-size: 18px;
+}
+
+.deletePost:hover {
+  background-color: red;
+  color: white;
+}
+
+.editPost:hover {
+  background-color: blue;
+  color: white;
+}
+
+.editDeleteWrapper {
+  margin-left: 7px;
+}
+
+.deletePost {
+  margin-right: 10px;
+}
+
 .indexPost {
   border: black 3px solid;
   margin: 5px;
