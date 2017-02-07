@@ -40,6 +40,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'capybara'
 end
 
 group :development do

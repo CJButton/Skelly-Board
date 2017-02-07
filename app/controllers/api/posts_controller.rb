@@ -14,7 +14,7 @@ class Api::PostsController < ApplicationController
   @post = Post.new(posts_params)
 
     if @post.save
-      render "api/posts/show"
+      render json: @post
     else
       render(
         json: ["Title/Text cannot be blank"],
