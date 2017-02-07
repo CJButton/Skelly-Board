@@ -29,10 +29,7 @@ class Api::CommentsController < ApplicationController
   end
 
   def update
-    @review = Review.update(params[:id].to_i, :rating => params[:rating],
-    :title => params[:title], :description => params[:text])
-
-    render json: @review
+  
   end
 
   private
