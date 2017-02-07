@@ -23,7 +23,7 @@ class PostsIndex extends React.Component{
   closeModal() {
     this.setState({
       addModal: false,
-      editModal: false
+      errorModal: false
     });
   }
 
