@@ -10,6 +10,7 @@ class PostsIndex extends React.Component{
 
     this.state = {
       addModal: false,
+      errorModal: false,
       title: "",
       text: ""
     };
@@ -21,14 +22,21 @@ class PostsIndex extends React.Component{
 
   closeModal() {
     this.setState({
-      addModal: false
+      addModal: false,
+      editModal: false
     });
   }
 
   openAddModal() {
-    this.setState({
-      addModal: true
-    });
+    if (this.props.user === null) {
+      this.setState({
+        errorModal: true
+      });
+    } else {
+      this.setState({
+        addModal: true
+      });
+    }
   }
 
   componentWillMount() {
@@ -51,7 +59,6 @@ class PostsIndex extends React.Component{
   }
 
   render() {
-    console.log(this.props);
     return (
     <div className="postsIndexWrapper">
       <div className="postIndexTop">
@@ -75,6 +82,19 @@ class PostsIndex extends React.Component{
         );
       })}
       </div>
+
+      <Modal className="errorModal"
+            isOpen={this.state.errorModal}
+            contentLabel="Modal4">
+            <div className="addCommentFormTop">
+              <button className="closeAddCommentButton button"
+                onClick={this.closeModal.bind(this)}>X</button>
+              <h3 className="errorTitle2">
+                You must be logged in to make a post.
+              </h3>
+            </div>
+
+          </Modal>
 
       <Modal className="addModal"
           isOpen={this.state.addModal}

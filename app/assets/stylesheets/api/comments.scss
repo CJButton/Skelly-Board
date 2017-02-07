@@ -2,6 +2,44 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.errorModal {
+  position: fixed;
+  top: 10%;
+  left: 35%;
+  background-color: white;
+  padding: 15px;
+  height: 25%;
+  width: 27%;
+  color: black;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: black;
+}
+
+.closeAddCommentButton {
+  height: 35px;
+  font-size: 25px;
+  background-color: white;
+  border-radius: 3px;
+  border-width: 1px;
+  border-color: black;
+  margin-top: 8px;
+  margin-left: 90%;
+}
+
+.closeAddCommentButton:hover {
+  background-color: red;
+  color: white;
+}
+
+.errorTitle {
+  margin-top: 50px;
+  margin-left: 10px;
+}
+
 .indivComments {
   border: black solid 3px;
   margin: 5px;
